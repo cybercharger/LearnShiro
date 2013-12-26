@@ -21,6 +21,11 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        if (authenticationToken == null) return null;
+        if (authenticationToken.getPrincipal() == null
+                || !authenticationToken.getPrincipal().toString().contains("TestAccount")) {
+            return null;
+        }
         return new SimpleAuthenticationInfo(authenticationToken.getPrincipal(), authenticationToken.getCredentials(), "MyRealm");
     }
 }
