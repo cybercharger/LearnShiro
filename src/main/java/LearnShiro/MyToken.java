@@ -20,4 +20,9 @@ public class MyToken implements AuthenticationToken {
     public Object getCredentials() {
         return credential;
     }
+
+    @Override
+    public String toString() {
+        return "{[Principal]: " + principal + " [Credential]: " + credential + "}";
+    }
 }
